@@ -8,27 +8,37 @@ export const ContactUs = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm(
-        "service_w6s38xj",
-        "template_ttpyzh4",
-        form.current,
-        "M4OTMS6BNW3FCqMaE",
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          toast.success("Email Sent Successfully", {
-            position: toast.POSITION.TOP_RIGHT,
-          });
-        },
-        (error) => {
-          console.log(error.text);
-          toast.error(error.text, {
-            position: toast.POSITION.TOP_RIGHT,
-          });
-        },
-      );
+    if (
+      form.current.user_name.value === "" ||
+      form.current.user_email.value === "" ||
+      form.current.message.value === ""
+    ) {
+      toast.error("Please Fill All Fields", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    } else {
+      emailjs
+        .sendForm(
+          "service_w6s38xj",
+          "template_ttpyzh4",
+          form.current,
+          "M4OTMS6BNW3FCqMaE",
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+            toast.success("Email Sent Successfully", {
+              position: toast.POSITION.TOP_RIGHT,
+            });
+          },
+          (error) => {
+            console.log(error.text);
+            toast.error(error.text, {
+              position: toast.POSITION.TOP_RIGHT,
+            });
+          },
+        );
+    }
   };
 
   return (
