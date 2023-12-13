@@ -1,0 +1,20 @@
+.container {
+  height: 30px;
+}
+
+@media (max-width: 767px) {
+  .container {
+    width: 250px;
+  }
+}
+.character {
+  border: 1px solid #6672dc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  font-size: 20px;
+  border-radius: 8px;
+  color: #272729;
+  box-shadow: 0 2px 0 #e4e2f5;
+}
